@@ -1,0 +1,5 @@
+datasets:
+  clevr:
+    data_type: images
+    build_info:
+      storage: /nobackup/users/zfchen/zt/clevr/CLEVR_v1.0/

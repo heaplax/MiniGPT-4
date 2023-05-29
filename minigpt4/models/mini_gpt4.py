@@ -168,13 +168,14 @@ class MiniGPT4(Blip2Base):
         img_embeds, atts_img = self.encode_img(image)
         if hasattr(samples, 'question_split'):  # VQA dataset
             print('VQA Batch')
-            vqa_prompt = '###Human: <Img><ImageHere></Img> '
+            vqa_prompt = f'###Human: <Img><ImageHere></Img> {samples["question_split"]} ###Assistant: '
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, vqa_prompt)
         elif self.prompt_list:
             prompt = random.choice(self.prompt_list)
             print(prompt)
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, prompt)
 
+        print(samples["text_input"])
         self.llama_tokenizer.padding_side = "right"
 
         text = [t + self.end_sym for t in samples["text_input"]]
