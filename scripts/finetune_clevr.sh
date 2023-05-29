@@ -1,0 +1,1 @@
+torchrun --nproc-per-node 4 train.py --cfg-path train_configs/minigpt4_stage2_finetune.yaml

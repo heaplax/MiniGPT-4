@@ -172,6 +172,7 @@ class MiniGPT4(Blip2Base):
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, vqa_prompt)
         elif self.prompt_list:
             prompt = random.choice(self.prompt_list)
+            print(prompt)
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, prompt)
 
         self.llama_tokenizer.padding_side = "right"
