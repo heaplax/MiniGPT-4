@@ -15,7 +15,7 @@ class __DisplMixin:
             {
                 "file": ann["image"],
                 "question": ann["question"],
-                "answer": ann["answer"],
+                "caption": ann["caption"],
                 "image": sample["image"],
             }
         )
@@ -63,18 +63,18 @@ class ClevrDataset(BaseDataset, __DisplMixin):
             "image_id": image_id,
         }
 
-    def collater(self, samples):
-        image_list, question_list, answer_list = [], [], []
+    # def collater(self, samples):
+    #     image_list, question_list, answer_list = [], [], []
 
-        num_answers = []
+    #     num_answers = []
 
-        for sample in samples:
-            image_list.append(sample["image"])
-            question_list.append(sample["text_input"])
-            answer_list.append(sample["answer"])
+    #     for sample in samples:
+    #         image_list.append(sample["image"])
+    #         question_list.append(sample["text_input"])
+    #         answer_list.append(sample["answer"])
 
-        return {
-            "image": torch.stack(image_list, dim=0),
-            "text_input": answer_list,
-            "question_split": question_list,
-        }
+    #     return {
+    #         "image": torch.stack(image_list, dim=0),
+    #         "text_input": answer_list,
+    #         "question_split": question_list,
+    #     }
