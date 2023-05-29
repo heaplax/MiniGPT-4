@@ -79,11 +79,12 @@ def main():
     job_id = now()
 
     cfg = Config(parse_args())
-
+    
+    print("111111")
     init_distributed_mode(cfg.run_cfg)
-
+    print("222222")
     setup_seeds(cfg)
-
+    print("333333")
     # set after init_distributed_mode() to only log on master.
     setup_logger()
 
