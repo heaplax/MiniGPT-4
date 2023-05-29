@@ -177,6 +177,9 @@ class MiniGPT4(Blip2Base):
             # print(prompt)
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, prompt)
 
+        samples["image"] = ""
+        print(samples)
+
         # print(samples["text_input"])
         self.llama_tokenizer.padding_side = "right"
 
