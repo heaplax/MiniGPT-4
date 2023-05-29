@@ -25,12 +25,12 @@ run:
   # optimizer
   lr_sched: "linear_warmup_cosine_lr"
   init_lr: 3e-5
-  min_lr: 1e-5
+  min_lr: 1e-7
   warmup_lr: 1e-6
 
   weight_decay: 0.05
-  max_epoch: 5
-  iters_per_epoch: 200
+  max_epoch: 50
+  iters_per_epoch: 2400
   batch_size_train: 1
   batch_size_eval: 1
   accum_grad_iters: 12
