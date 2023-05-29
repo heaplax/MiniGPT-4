@@ -120,7 +120,7 @@ class ClevrTrainProcessor(BlipImageBaseProcessor):
         self.transform = transforms.Compose(
             [
                 SquarePad(),
-                transforms.Resize((image_size, image_size), interpolation=Image.BICUBIC),
+                transforms.Resize((image_size, image_size), interpolation=InterpolationMode.BICUBIC),
                 transforms.ToTensor(),
                 self.normalize,
             ]
