@@ -11,8 +11,8 @@ echo $ip2
 echo $NODE_RANK
 echo $SLURM_JOB_NUM_NODES
 torchrun --nproc_per_node=4 \
-    --master_addr ${ip2} \
-    --node_rank ${NODE_RANK} \
-    --nnodes $SLURM_JOB_NUM_NODES \
     train.py \
     --cfg-path train_configs/minigpt4_stage2_finetune.yaml
+    #--master_addr ${ip2} \
+    #--node_rank ${NODE_RANK} \
+    #--nnodes $SLURM_JOB_NUM_NODES \
