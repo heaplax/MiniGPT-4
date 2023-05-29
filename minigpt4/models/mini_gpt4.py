@@ -166,10 +166,10 @@ class MiniGPT4(Blip2Base):
     def forward(self, samples):
         image = samples["image"]
         img_embeds, atts_img = self.encode_img(image)
-        if hasattr(samples, 'question'):  # VQA dataset
-            print('VQA Batch')
-            print(samples["question"])
-            vqa_prompt = f'###Human: <Img><ImageHere></Img> {samples["question"]} ###Assistant: '
+        if 'question' in samples:  # VQA dataset
+            # print('VQA Batch')
+            # print(samples["question"])
+            vqa_prompt = f'###Human: <Img><ImageHere></Img> {samples["question"][0]} ###Assistant: '
             print(vqa_prompt)
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, vqa_prompt)
         elif self.prompt_list:
@@ -177,8 +177,8 @@ class MiniGPT4(Blip2Base):
             # print(prompt)
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, prompt)
 
-        samples["image"] = ""
-        print(samples)
+        # samples["image"] = ""
+        # print(samples)
 
         # print(samples["text_input"])
         self.llama_tokenizer.padding_side = "right"
