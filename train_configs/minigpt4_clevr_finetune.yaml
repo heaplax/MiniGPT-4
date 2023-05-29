@@ -18,7 +18,7 @@ datasets:
         image_size: 224
     text_processor:
       train:
-        name: "blip_caption"
+        name: "blip_question"
 
 run:
   task: image_text_pretrain
