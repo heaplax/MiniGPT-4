@@ -15,8 +15,7 @@ class __DisplMixin:
             {
                 "file": ann["image"],
                 "question": ann["question"],
-                "question_id": ann["question_id"],
-                "answers": "; ".join(ann["answer"]),
+                "answer": ann["answer"],
                 "image": sample["image"],
             }
         )
@@ -53,6 +52,7 @@ class ClevrDataset(BaseDataset, __DisplMixin):
 
         image = self.vis_processor(image)
         question = ann["question"]
+        image_id = ann["image_index"]
 
         answer = ann["answer"]
 
@@ -60,6 +60,7 @@ class ClevrDataset(BaseDataset, __DisplMixin):
             "image": image,
             "text_input": answer,
             "question": question,
+            "image_id": image_id,
         }
 
     def collater(self, samples):
