@@ -7,7 +7,7 @@ model:
   end_sym: "###"
   prompt_path: "prompts/alignment.txt"
   prompt_template: '###Human: {} ###Assistant: '
-  ckpt: '/path/to/stage1/checkpoint/'
+  ckpt: '/nobackup/users/zfchen/zt/MiniGPT-4/checkpoints/prerained_minigpt4_7b.pth'
 
 
 datasets:
