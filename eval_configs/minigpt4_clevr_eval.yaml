@@ -12,14 +12,22 @@ model:
 
 
 datasets:
-  clevr:
+  # clevr:
+  #   vis_processor:
+  #     train:
+  #       name: "blip2_image_train"
+  #       image_size: 224
+  #   text_processor:
+  #     train:
+  #       name: "blip_question"
+  cc_sbu_align:
     vis_processor:
       train:
-        name: "blip2_image_train"
+        name: "blip2_image_eval"
         image_size: 224
     text_processor:
       train:
-        name: "blip_question"
+        name: "blip_caption"
 
 run:
   task: image_text_pretrain
