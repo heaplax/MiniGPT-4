@@ -14,8 +14,8 @@ datasets:
   clevr:
     vis_processor:
       train:
-        name: "blip2_image_train"
-        image_size: 224
+        name: "clevr_train"
+        image_size: 480
     text_processor:
       train:
         name: "blip_question"
@@ -33,6 +33,7 @@ run:
   iters_per_epoch: 200
   batch_size_train: 1
   batch_size_eval: 1
+  accum_grad_iters: 12
   num_workers: 4
   warmup_steps: 200
 

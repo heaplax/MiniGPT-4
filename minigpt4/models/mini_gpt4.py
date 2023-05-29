@@ -170,7 +170,7 @@ class MiniGPT4(Blip2Base):
             # print('VQA Batch')
             # print(samples["question"])
             vqa_prompt = f'###Human: <Img><ImageHere></Img> {samples["question"][0]} ###Assistant: '
-            print(vqa_prompt)
+            # print(vqa_prompt)
             img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, vqa_prompt)
         elif self.prompt_list:
             prompt = random.choice(self.prompt_list)
