@@ -42,10 +42,10 @@ run:
   amp: True
   resume_ckpt_path: null
 
-  evaluate: False 
+  evaluate: False
   train_splits: ["train"]
 
   device: "cuda"
   world_size: 1
   dist_url: "env://"
-  distributed: False
+  distributed: True
