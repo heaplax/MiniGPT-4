@@ -121,7 +121,8 @@ for question in question_list:
     print(llm_message)
     # chat_state, img_list = gradio_reset(chat_state, img_list)
 
-
+generate_output(path_info, response_list)
+eval_output(path_info)
 
 
 # ========================================
