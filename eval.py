@@ -89,23 +89,19 @@ def upload_img(gr_img):
     llm_message = chat.upload_img(gr_img, chat_state, img_list)
     return chat_state, img_list
 
-def gradio_ask(user_message, chatbot, chat_state):
+def gradio_ask(user_message, chat_state):
     chat.ask(user_message, chat_state)
-    chatbot = chatbot + [[user_message, None]]
-    return chatbot, chat_state
+    return chat_state
 
 
-def gradio_answer(chatbot, chat_state, img_list, num_beams, temperature):
+def gradio_answer(chat_state, img_list, num_beams, temperature):
     llm_message = chat.answer(conv=chat_state,
                               img_list=img_list,
                               num_beams=num_beams,
                               temperature=temperature,
                               max_new_tokens=300,
                               max_length=2000)[0]
-    chatbot[-1][1] = llm_message
-    return chatbot, chat_state, img_list, llm_message 
-
-
+    return chat_state, img_list, llm_message
 
 
 nums = args.nums
@@ -113,10 +109,9 @@ question_list = get_clevr_random_question(path_info, split='val', nums=nums)
 response_list = []
 
 for question in question_list:
-    chatbot = gr.Chatbot(label='MiniGPT-4')
     chat_state, img_list = upload_img(question["image_path"])
-    chatbot, chat_state = gradio_ask(question["question"], chatbot, chat_state)
-    chatbot, chat_state, img_list, llm_message = gradio_answer(chatbot, chat_state, img_list, 1, 1)
+    chat_state = gradio_ask(question["question"], chat_state)
+    chat_state, img_list, llm_message = gradio_answer(chat_state, img_list, 1, 1)
     response_list.append(llm_message)
     print(llm_message)
     # chat_state, img_list = gradio_reset(chat_state, img_list)
