@@ -10,7 +10,7 @@ import gradio as gr
 from minigpt4.common.config import Config
 from minigpt4.common.dist_utils import get_rank
 from minigpt4.common.registry import registry
-from minigpt4.conversation.conversation import Chat, CONV_VISION
+from minigpt4.conversation.conversation import Chat, Conversation, SeparatorStyle
 
 # imports modules for registration
 from minigpt4.datasets.builders import *
@@ -76,6 +76,23 @@ chat = Chat(model, vis_processor, device='cuda:{}'.format(args.gpu_id))
 print('Initialization Finished')
 
 
+class ClevrConversation(Conversation):
+    prompt = "###Human: <Img><ImageHere></Img> {} ###Assistant: "
+    def add_question(self, question):
+        self.question = question
+    def get_prompt(self):
+        return self.prompt.format(self.question)
+
+
+CLEVR_VISION = ClevrConversation(
+    system=" ",
+    roles=("Human", "Assistant"),
+    messages=[],
+    offset=2,
+    sep_style=SeparatorStyle.SINGLE,
+    sep="###",
+)
+
 def gradio_reset(chat_state, img_list):
     if chat_state is not None:
         chat_state.messages = []
@@ -84,12 +101,13 @@ def gradio_reset(chat_state, img_list):
     return chat_state, img_list
 
 def upload_img(gr_img):
-    chat_state = CONV_VISION.copy()
+    chat_state = CLEVR_VISION.copy()
     img_list = []
     llm_message = chat.upload_img(gr_img, chat_state, img_list)
     return chat_state, img_list
 
 def gradio_ask(user_message, chat_state):
+    chat_state.add_question(user_message)
     chat.ask(user_message, chat_state)
     return chat_state
 
