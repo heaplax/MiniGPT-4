@@ -135,5 +135,11 @@ class ClevrBuilder(BaseDatasetBuilder):
             ann_paths=[os.path.join(storage_path, 'questions', 'CLEVR_train_questions.json')],
             vis_root=os.path.join(storage_path, 'images', 'train'),
         )
+        datasets['val'] = dataset_cls(
+            vis_processor=self.vis_processors["val"],
+            text_processor=self.text_processors["val"],
+            ann_paths=[os.path.join(storage_path, 'questions', 'CLEVR_val_sub_questions.json')],
+            vis_root=os.path.join(storage_path, 'images', 'val'),
+        )
 
         return datasets
