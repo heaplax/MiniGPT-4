@@ -8,26 +8,26 @@ model:
   low_resource: False
   prompt_path: "prompts/alignment.txt"
   prompt_template: '###Human: {} ###Assistant: '
-  ckpt: '/nobackup/users/zfchen/zt/MiniGPT-4/minigpt4/output/clevr_finetune/20230529113/checkpoint_4.pth'
+  ckpt: '/nobackup/users/zfchen/zt/MiniGPT-4/minigpt4/output/clevr_finetune/20230529130/checkpoint_49.pth'
 
 
 datasets:
-  # clevr:
-  #   vis_processor:
-  #     train:
-  #       name: "blip2_image_train"
-  #       image_size: 224
-  #   text_processor:
-  #     train:
-  #       name: "blip_question"
-  cc_sbu_align:
+  clevr:
     vis_processor:
       train:
-        name: "blip2_image_eval"
+        name: "clevr_train"
         image_size: 224
     text_processor:
       train:
-        name: "blip_caption"
+        name: "blip_question"
+  # cc_sbu_align:
+  #   vis_processor:
+  #     train:
+  #       name: "blip2_image_eval"
+  #       image_size: 224
+  #   text_processor:
+  #     train:
+  #       name: "blip_caption"
 
 run:
   task: image_text_pretrain
