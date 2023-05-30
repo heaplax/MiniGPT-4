@@ -82,6 +82,18 @@ class ClevrConversation(Conversation):
         self.question = question
     def get_prompt(self):
         return self.prompt.format(self.question)
+    def copy(self):
+        return ClevrConversation(
+            prompt=self.prompt,
+            system=self.system,
+            # system_img=self.system_img,
+            roles=self.roles,
+            messages=[[x, y] for x, y in self.messages],
+            offset=self.offset,
+            sep_style=self.sep_style,
+            sep=self.sep,
+            sep2=self.sep2,
+            conv_id=self.conv_id)
 
 
 CLEVR_VISION = ClevrConversation(
