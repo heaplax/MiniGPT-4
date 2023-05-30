@@ -84,7 +84,6 @@ class ClevrConversation(Conversation):
         return self.prompt.format(self.question)
     def copy(self):
         return ClevrConversation(
-            prompt=self.prompt,
             system=self.system,
             # system_img=self.system_img,
             roles=self.roles,
