@@ -23,10 +23,10 @@ from clevr.load_clevr import get_clevr_random_question, generate_output, eval_ou
 
 path_info = {
         "clevr_path": "/nobackup/users/zfchen/zt/clevr/CLEVR_v1.0",
-        "result_file_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/result_file_OFA-base.json",
-        "ann_file_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/ann_file_OFA-base.json",
-        "ques_file_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/ques_file_OFA-base.json",
-        "output_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/output_OFA-base.json",
+        "result_file_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/result_file_clevr.json",
+        "ann_file_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/ann_file_clevr.json",
+        "ques_file_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/ques_file_clevr.json",
+        "output_path": "/nobackup/users/zfchen/zt/MiniGPT-4/output/output_clevr.json",
     }
 
 
@@ -113,7 +113,7 @@ for question in question_list:
     chat_state = gradio_ask(question["question"], chat_state)
     chat_state, img_list, llm_message = gradio_answer(chat_state, img_list, 1, 1)
     response_list.append(llm_message)
-    print(llm_message)
+    # print(llm_message)
     # chat_state, img_list = gradio_reset(chat_state, img_list)
 
 generate_output(path_info, response_list)
