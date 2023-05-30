@@ -57,8 +57,10 @@ class BaseTask:
             dataset = builder.build_datasets()
 
             dataset['train'].name = name
+            dataset['eval'].name = name
             if 'sample_ratio' in dataset_config:
                 dataset['train'].sample_ratio = dataset_config.sample_ratio
+                dataset['eval'].sample_ratio = dataset_config.sample_ratio
 
             datasets[name] = dataset
 
