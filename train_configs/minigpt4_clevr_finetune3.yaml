@@ -16,13 +16,13 @@ datasets:
       train:
         name: "clevr_train"
         image_size: 224
-      val:
+      eval:
         name: "clevr_train"
         image_size: 224
     text_processor:
       train:
         name: "blip_question"
-      val:
+      eval:
         name: "blip_question"
 
 run:
@@ -50,7 +50,7 @@ run:
 
   evaluate: True
   train_splits: ["train"]
-  valid_splits: ["val"]
+  valid_splits: ["eval"]
 
   device: "cuda"
   world_size: 1
