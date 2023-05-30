@@ -19,7 +19,7 @@ from minigpt4.processors import *
 from minigpt4.runners import *
 from minigpt4.tasks import *
 
-from clevr.load_clevr import get_clevr_random_question, generate_output, eval_output
+from clevr.load_clevr import get_clevr_question, generate_output, eval_output
 
 path_info = {
         "clevr_path": "/nobackup/users/zfchen/zt/clevr/CLEVR_v1.0",
@@ -134,7 +134,7 @@ def gradio_answer(chat_state, img_list, num_beams, temperature):
 
 
 nums = args.nums
-question_list = get_clevr_random_question(path_info, split='val', nums=nums)
+question_list = get_clevr_question(path_info, split='val', nums=nums)
 response_list = []
 
 for question in question_list:
@@ -145,7 +145,7 @@ for question in question_list:
     # print(llm_message)
     # chat_state, img_list = gradio_reset(chat_state, img_list)
 
-generate_output(path_info, response_list)
+generate_output(path_info, question_list, response_list)
 eval_output(path_info)
 
 
