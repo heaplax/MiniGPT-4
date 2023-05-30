@@ -22,7 +22,7 @@ from minigpt4.tasks import *
 from clevr.load_clevr import get_clevr_random_question, generate_output, eval_output
 
 path_info = {
-        "clevr_path": "F:/work/clevr/CLEVR_v1.0",
+        "clevr_path": "/nobackup/users/zfchen/zt/clevr/CLEVR_v1.0",
         "result_file_path": "/nobackup/users/zfchen/zt/OFA_transformer/OFA/result_file_OFA-base.json",
         "ann_file_path": "/nobackup/users/zfchen/zt/OFA_transformer/OFA/ann_file_OFA-base.json",
         "ques_file_path": "/nobackup/users/zfchen/zt/OFA_transformer/OFA/ques_file_OFA-base.json",
